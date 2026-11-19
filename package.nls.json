@@ -1,0 +1,21 @@
+{
+  "open": "Open File Manager",
+  "settings": "Settings",
+  "refresh": "Refresh",
+  "download": "Download File",
+  "copy": "Copy HDFS Path",
+  "connections": "Connections",
+  "welcome": "Browse HDFS without leaving your editor.\n[Add a connection](command:hdfsLite.settings)",
+  "openFolder": "Open Folder",
+  "preview": "Preview",
+  "previewTab": "Open Preview in Editor Tab",
+  "copyName": "Copy Name",
+  "info": "File Information",
+  "parent": "Parent Folder",
+  "connectionSettings": "Connection Settings",
+  "upload": "Upload",
+  "mkdir": "New folder",
+  "rename": "Rename",
+  "delete": "Delete",
+  "favorite": "Favorite folder"
+}

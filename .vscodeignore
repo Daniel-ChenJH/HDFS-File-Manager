@@ -1,0 +1,11 @@
+**/*
+!package.json
+!package.nls*.json
+!README.md
+!README.zh-CN.md
+!CHANGELOG.md
+!LICENSE
+!THIRD_PARTY_NOTICES.md
+!media/icon.png
+!media/tree.svg
+!dist/**

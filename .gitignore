@@ -1,0 +1,15 @@
+node_modules/
+dist/
+out/
+artifacts/
+*.vsix
+.DS_Store
+companion/LICENSE
+companion/media/
+.vscode-test*/
+coverage/
+*.log
+.env
+.env.*
+/.npmrc
+/docs/archive/

@@ -1,0 +1,408 @@
+{
+  "name": "hdfs-file-manager",
+  "displayName": "HDFS File Manager",
+  "description": "A lightweight HDFS file browser for VS Code and Cursor. Add a connection to browse, preview, upload, and download files.",
+  "version": "0.1.0",
+  "publisher": "daniel-chenjh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Daniel-ChenJH/HDFS-File-Manager.git"
+  },
+  "homepage": "https://github.com/Daniel-ChenJH/HDFS-File-Manager",
+  "bugs": {
+    "url": "https://github.com/Daniel-ChenJH/HDFS-File-Manager/issues"
+  },
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other",
+    "Data Science"
+  ],
+  "keywords": [
+    "hdfs",
+    "hadoop",
+    "webhdfs",
+    "httpfs",
+    "explorer"
+  ],
+  "icon": "media/icon.png",
+  "extensionKind": [
+    "workspace"
+  ],
+  "main": "./dist/extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "hdfsLite.open",
+        "title": "%open%",
+        "category": "HDFS",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "hdfsLite.settings",
+        "title": "%settings%",
+        "category": "HDFS",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "hdfsLite.refresh",
+        "title": "%refresh%",
+        "category": "HDFS",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "hdfsLite.download",
+        "title": "%download%",
+        "category": "HDFS",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "hdfsLite.copy",
+        "title": "%copy%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.openFolder",
+        "title": "%openFolder%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.preview",
+        "title": "%preview%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.previewTab",
+        "title": "%previewTab%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.copyName",
+        "title": "%copyName%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.info",
+        "title": "%info%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.parent",
+        "title": "%parent%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.connectionSettings",
+        "title": "%connectionSettings%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.upload",
+        "title": "%upload%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.mkdir",
+        "title": "%mkdir%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.rename",
+        "title": "%rename%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.delete",
+        "title": "%delete%",
+        "category": "HDFS"
+      },
+      {
+        "command": "hdfsLite.favorite",
+        "title": "%favorite%",
+        "category": "HDFS"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "hdfsLite",
+          "title": "HDFS",
+          "icon": "media/tree.svg"
+        }
+      ]
+    },
+    "views": {
+      "hdfsLite": [
+        {
+          "id": "hdfsLite.tree",
+          "name": "%connections%",
+          "when": "hdfsLite.hasConnections"
+        },
+        {
+          "id": "hdfsLite.welcome",
+          "type": "webview",
+          "name": "%connections%",
+          "when": "!hdfsLite.hasConnections"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "hdfsLite.tree",
+        "contents": "%welcome%"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "hdfsLite.download",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.copy",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.openFolder",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.preview",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.previewTab",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.copyName",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.info",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.parent",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.connectionSettings",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.upload",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.mkdir",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.rename",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.delete",
+          "when": "false"
+        },
+        {
+          "command": "hdfsLite.favorite",
+          "when": "false"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "hdfsLite.open",
+          "when": "view == hdfsLite.tree",
+          "group": "navigation@1"
+        },
+        {
+          "command": "hdfsLite.refresh",
+          "when": "view == hdfsLite.tree",
+          "group": "navigation@2"
+        },
+        {
+          "command": "hdfsLite.settings",
+          "when": "view == hdfsLite.tree",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "hdfsLite.openFolder",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(connection|directory|message)(Readonly)?$/",
+          "group": "1_open@1"
+        },
+        {
+          "command": "hdfsLite.previewTab",
+          "when": "view == hdfsLite.tree && viewItem =~ /^file(Readonly)?$/",
+          "group": "1_open@1"
+        },
+        {
+          "command": "hdfsLite.download",
+          "when": "view == hdfsLite.tree && viewItem =~ /^file(Readonly)?$/",
+          "group": "inline"
+        },
+        {
+          "command": "hdfsLite.download",
+          "when": "view == hdfsLite.tree && viewItem =~ /^file(Readonly)?$/",
+          "group": "2_transfer@1"
+        },
+        {
+          "command": "hdfsLite.copy",
+          "when": "view == hdfsLite.tree && viewItem !~ /^message/",
+          "group": "3_copy@1"
+        },
+        {
+          "command": "hdfsLite.copyName",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(file|directory|symlink)(Readonly)?$/",
+          "group": "3_copy@2"
+        },
+        {
+          "command": "hdfsLite.info",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(file|directory|symlink)(Readonly)?$/",
+          "group": "4_info"
+        },
+        {
+          "command": "hdfsLite.refresh",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(connection|directory|message)(Readonly)?$/",
+          "group": "5_connection@1"
+        },
+        {
+          "command": "hdfsLite.connectionSettings",
+          "when": "view == hdfsLite.tree && viewItem =~ /^connection(Readonly)?$/",
+          "group": "5_connection@2"
+        },
+        {
+          "command": "hdfsLite.upload",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(connection|directory)$/",
+          "group": "2_transfer@2"
+        },
+        {
+          "command": "hdfsLite.mkdir",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(connection|directory)$/",
+          "group": "2_transfer@3"
+        },
+        {
+          "command": "hdfsLite.rename",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(file|directory)$/",
+          "group": "6_write@1"
+        },
+        {
+          "command": "hdfsLite.delete",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(file|directory)$/",
+          "group": "6_write@2"
+        },
+        {
+          "command": "hdfsLite.favorite",
+          "when": "view == hdfsLite.tree && viewItem =~ /^(directory|directoryReadonly)$/",
+          "group": "3_copy@3"
+        },
+        {
+          "command": "hdfsLite.download",
+          "when": "view == hdfsLite.tree && viewItem =~ /^directory(Readonly)?$/",
+          "group": "2_transfer@1"
+        }
+      ],
+      "webview/context": [
+        {
+          "command": "hdfsLite.openFolder",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == directory",
+          "group": "1_open@1"
+        },
+        {
+          "command": "hdfsLite.preview",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == file",
+          "group": "1_open@1"
+        },
+        {
+          "command": "hdfsLite.previewTab",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == file",
+          "group": "1_open@2"
+        },
+        {
+          "command": "hdfsLite.download",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == file",
+          "group": "2_transfer@1"
+        },
+        {
+          "command": "hdfsLite.copy",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection =~ /^(file|directory|symlink|background)$/",
+          "group": "3_copy@1"
+        },
+        {
+          "command": "hdfsLite.copyName",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection =~ /^(file|directory|symlink)$/",
+          "group": "3_copy@2"
+        },
+        {
+          "command": "hdfsLite.info",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection =~ /^(file|directory|symlink)$/",
+          "group": "4_info"
+        },
+        {
+          "command": "hdfsLite.parent",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == background && hdfsCanGoUp",
+          "group": "1_open@1"
+        },
+        {
+          "command": "hdfsLite.refresh",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == background",
+          "group": "1_open@2"
+        },
+        {
+          "command": "hdfsLite.connectionSettings",
+          "when": "webviewId == 'hdfsLite.explorer' && webviewSection == background",
+          "group": "5_connection"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "test:stress": "node --expose-gc --import tsx scripts/stress-client.ts",
+    "check": "npm run typecheck && npm test && npm run build",
+    "vscode:prepublish": "npm run build",
+    "package": "npm run check && node scripts/package.mjs",
+    "audit:package": "python3 scripts/audit_package.py",
+    "release:check": "node scripts/release-check.mjs",
+    "format": "prettier --write src test web scripts/*.mjs scripts/*.ts package.json tsconfig.json",
+    "format:check": "prettier --check src test web scripts/*.mjs scripts/*.ts package.json tsconfig.json",
+    "test:stress:writes": "node --expose-gc --import tsx scripts/stress-writes.ts"
+  },
+  "devDependencies": {
+    "@codemirror/search": "^6.7.2",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.15",
+    "@types/jsdom": "^30.0.0",
+    "@types/node": "^22.20.5",
+    "@types/vscode": "^1.96.0",
+    "@vscode/vsce": "^4.1.1",
+    "esbuild": "^0.28.2",
+    "jsdom": "^29.1.1",
+    "pdfjs-dist": "6.5.438",
+    "prettier": "3.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "overrides": {
+    "minimatch": "^11.0.1"
+  },
+  "dependencies": {
+    "undici": "8.12.4"
+  },
+  "extensionPack": [
+    "daniel-chenjh.hdfs-file-manager-local"
+  ]
+}

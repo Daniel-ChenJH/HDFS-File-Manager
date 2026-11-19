@@ -1,0 +1,21 @@
+{
+  "open": "打开 HDFS File Manager",
+  "settings": "设置",
+  "refresh": "刷新",
+  "download": "下载文件",
+  "copy": "复制 HDFS 路径",
+  "connections": "连接",
+  "welcome": "在编辑器中浏览 HDFS。\n[添加连接](command:hdfsLite.settings)",
+  "openFolder": "打开文件夹",
+  "preview": "预览",
+  "previewTab": "在编辑器标签页预览",
+  "copyName": "复制名称",
+  "info": "文件信息",
+  "parent": "上一级",
+  "connectionSettings": "连接设置",
+  "upload": "上传",
+  "mkdir": "新建文件夹",
+  "rename": "重命名",
+  "delete": "删除",
+  "favorite": "收藏目录"
+}
